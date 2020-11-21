@@ -1,7 +1,14 @@
 language: java
 jdk: oraclejdk11
+addons:
+  sonarcloud:
+    organization: "kryffin"
+    token:
+      secure: f4yY30b7l1NZ5F2dZ2xgde35+aQz5VBkXEII0IPj5hppXfZk1smbwjbggTHGfFlx4Ec2vUXTnWc7TOlXy+SApth+/rvhvHjyYv6w4Rr3ralXrk0n/2YGft6OCh5HiPCVgr0bCRIsMXLpzEXifA6iEgxq5LxDA+FsvP8e6kTR1grcOCr7S+0AXytH7969pNOrvNEuF2yaodDg0IkrS7ZXsT+ovjkysPIBc+ZWj6nI75JlSugKq7xibRRozKR2L6t6ryFkNhMGtnoh/DF9j6zTE2HsqFhqireGB2pGWhQuRQd2k/yvpWYf4X4p+24Nc/6wjlUoIfz+ONtrBaEVxeCSsY1W1NZEbBwvpc0NM28BAJiBPHxxpxaSHt38XiQtN5uVxoqPAgZJPMs2Nyrbj248/ZCu0IOqSrZO7CX0RGyDDyX+vkkyJ58OmJke1obzA3YEWeHvmSP1XPhXkfDeGmn0dCDMplzQwU69XkdhvjcaFV+i4iT2c7Vwkk25bBRJQg+Vvgpbx9LYqo8vTcD0FDsQ63CvwSeE0auPrbZ7CNIqh5x9zX2yHJDmp44bpOc2d/FuFuSoN/Twg3ZHrGH4w6znHErnhF8tFaXD1xWcq59H6yDkMVwTZyYC/onWqXhSZpfizrUdiq6xNAWO3lFqYZ/cRLY1IQTJkrG1WghyitzLoZ0=
+
 script:
-- mvn clean verify
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 after_deploy:
 - echo "done deploying"
 env:
