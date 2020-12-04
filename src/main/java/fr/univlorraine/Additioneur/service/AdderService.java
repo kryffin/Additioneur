@@ -5,33 +5,34 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdderService {
 
-    private int num;
+    private float num;
 
-    public void baseNum(int base) {
+    public float baseNum(float base) {
         this.num = base;
+        return this.num;
     }
 
-    public int currentBase() {
+    public float currentBase() {
         return num;
     }
 
-    public int add(int adder) {
+    public float add(float adder) {
         return num + adder;
     }
 
-    public int sub(int adder) {
+    public float sub(float adder) {
         return num - adder;
     }
 
-    public int time(int adder) {
+    public float time(float adder) {
         return num * adder;
     }
 
-    public float div(int adder) {
-        return num / (float) adder;
+    public float div(float adder) {
+        return num / adder;
     }
 
-    public int accumulate(int adder) {
+    public float accumulate(float adder) {
         return num += adder;
     }
 
