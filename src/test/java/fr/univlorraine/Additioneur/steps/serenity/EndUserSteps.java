@@ -3,6 +3,8 @@ package fr.univlorraine.Additioneur.steps.serenity;
 import fr.univlorraine.Additioneur.pages.AdderPage;
 import net.thucydides.core.annotations.Step;
 
+import java.util.Locale;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -47,7 +49,9 @@ public class EndUserSteps {
 
     @Step
     public void should_be_reponse(float reponse) {
-        assertThat(Float.parseFloat(adderPage.getReponse()), is(reponse));
+        // converting float to 2 decimals string to simplify testing
+        String rep = String.format(Locale.US, "%.2f", reponse);
+        assertThat(adderPage.getReponse(), is(rep));
     }
 
     @Step
